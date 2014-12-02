@@ -2,7 +2,8 @@
 ==============
 
 NodeJS Service which retrieves a random Octocat from Octodex.
-The index page will show a random octocat. The `/octocat` uri can be used in `img` tags.
+* The index page will show a random octocat. 
+* The `/octocat` uri can be used in `img` tags.
 
 #Praise Octocat!
 
