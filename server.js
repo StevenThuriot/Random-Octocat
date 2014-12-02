@@ -26,7 +26,7 @@ function cacheOctocats(callback) {
             }
 
             console.log('Cached %s octocats.', images.length);
-            if (callback) callback(undefined, images);
+            callback(undefined, images);
         });
 };
 
@@ -55,27 +55,31 @@ function getOctocat(callback) {
 }
 
 var app = require('http').createServer(function (req, res) {
-    if (req.url !== '/') {
+    if (req.url === '/') {
+        res.writeHead(200, {
+            'Content-Type': 'text/html'
+        });
+        res.end('<html><head><title>Praise Octocat!</title></head><body><img src="/octocat" style="position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;"></body></html>');
+    } else if (req.url === '/octocat') {
+
+        getOctocat(function (error, image) {
+            if (error || !image) {
+                //Shit hit the fan... Return default one.
+                res.writeHead(302, {
+                    'Location': 'https://octodex.github.com/images/original.png'
+                });
+            } else {
+                res.writeHead(302, {
+                    'Location': image
+                });
+            }
+            res.end();
+        });
+        
+    } else {
         res.writeHead(404);
         res.end();
-
-        return;
     }
-
-    getOctocat(function (error, image) {
-        if (error || !image) {
-            //Shit hit the fan... Return default one.
-            res.writeHead(302, {
-                'Location': 'https://octodex.github.com/images/original.png'
-            });
-        } else {
-            res.writeHead(302, {
-                'Location': image
-            });
-        }
-
-        res.end();
-    });
 });
 
 cacheOctocats(function () {
