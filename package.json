@@ -1,6 +1,6 @@
 {
   "name": "Random-Octocat",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "NodeJS Service which retrieves a random Octocat from Octodex.",
   "main": "server.js",
   "scripts": {
