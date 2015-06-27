@@ -2,7 +2,7 @@ var cache = require("memory-cache");
 
 function cacheOctocats(callback) {
     console.log('Retrieving octocats.');
-    var url = 'http://octodex.github.com';
+    var url = 'https://octodex.github.com';
 
     var request = require('request')(url,
         function (error, res, html) {
