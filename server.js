@@ -86,8 +86,8 @@ var app = require('http').createServer(function (req, res) {
 });
 
 cacheOctocats(function () {
-    var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000;
-	var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+    var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80;
+	var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 	
     app.listen(port, ip, function(){
 	  console.log("Listening on %s:%s", ip, port);
