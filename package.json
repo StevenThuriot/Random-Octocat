@@ -28,6 +28,6 @@
   "dependencies": {
     "memory-cache": "0.0.5",
     "cheerio": "~0.18.0",
-    "request": "~2.49.0"
+    "request": "~2.88.2"
   }
 }
